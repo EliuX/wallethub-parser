@@ -5,18 +5,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-@Entity
 public final class RequestLog {
 
-    @Id
-    @GeneratedValue
     private Long id;
 
     private String ip;
 
     private Date date;
 
-    private RequestLog() { }
+    private RequestLog() {
+    }
 
     public RequestLog(String ip, Date date) {
         this.ip = ip;
@@ -45,5 +43,15 @@ public final class RequestLog {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof RequestLog) {
+            return ((RequestLog) obj).getDate().equals(getDate())
+                    && ((RequestLog) obj).getIp().equals(getIp());
+        }
+
+        return false;
     }
 }

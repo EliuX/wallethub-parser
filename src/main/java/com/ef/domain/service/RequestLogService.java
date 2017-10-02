@@ -1,6 +1,7 @@
 package com.ef.domain.service;
 
 import com.ef.domain.model.RequestLog;
+import com.ef.domain.persistence.RequestLogRepository;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -10,14 +11,14 @@ import java.util.Date;
 
 public class RequestLogService {
 
-    private EntityManager entityManager;
+    private RequestLogRepository requestLogRepository;
 
-    @Inject
-    public RequestLogService(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
 
     public Collection<String> findIps(Date startDate, Date endDate, Integer threshold) {
+        return Collections.emptyList();
+    }
+
+    public Collection<RequestLog> findRequestsByIp(String ip){
         return Collections.emptyList();
     }
 }

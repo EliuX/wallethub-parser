@@ -1,6 +1,7 @@
-CREATE TABLE IF NOT EXISTS requestlog (
+create database if not exists wallethub; 
+
+CREATE TABLE IF NOT EXISTS wallethub.requestlog (
   `id` SERIAL UNIQUE NOT NULL PRIMARY KEY,
   `ip` VARCHAR(15) NULL,
-  DATE TIMESTAMP NOT NULL,
-  PRIMARY KEY (`id`)
+  `date` TIMESTAMP NOT NULL
 ); 
