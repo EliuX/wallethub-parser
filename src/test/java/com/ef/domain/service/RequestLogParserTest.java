@@ -17,48 +17,6 @@ import static com.ef.domain.service.RequestLogParser.*;
 public class RequestLogParserTest {
 
     @Test
-    public void testIpv4Pattern() throws Exception {
-        Assert.assertTrue(
-                "The IPv4 pattern did not matched the local address",
-                IPV4_PATTERN.matcher("127.0.0.1").matches()
-        );
-
-        Assert.assertTrue(
-                "The IPv4 pattern did not matched a regular network address",
-                IPV4_PATTERN.matcher("192.168.0.1").matches()
-        );
-    }
-
-    @Test
-    public void testDateTimePattern() {
-        final Date sampleDate = new GregorianCalendar(
-                2017, 0, 1,
-                13, 10, 50
-        ).getTime();
-
-        Assert.assertEquals(
-                "The calendar was not properly converted into date",
-                "2017-01-01.13:10:50",
-                DATETIME_FORMATTER.format(sampleDate)
-        );
-
-        final Date expectedDate = new GregorianCalendar(
-                1985, 11, 31,
-                00, 59, 00
-        ).getTime();
-
-        try {
-            Assert.assertEquals(
-                    "The string representation of the date time was not properly parse",
-                    expectedDate,
-                    DATETIME_FORMATTER.parse("1985-12-31.00:59:00")
-            );
-        } catch (ParseException ex) {
-            Assert.fail("Failed parsing the string representation of the date time");
-        }
-    }
-
-    @Test
     public void testParseRequestLog() {
         RequestLogParser parser = new RequestLogParser();
 
