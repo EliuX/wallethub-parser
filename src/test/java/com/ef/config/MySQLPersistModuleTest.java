@@ -22,7 +22,8 @@ public class MySQLPersistModuleTest {
     @Test
     public void testConfiguration() throws Exception {
         Injector injector = Guice.createInjector(
-                new MySQLPersistModule()
+              new ParserModule(),
+              new MySQLPersistModule()
         );
 
         initPersistService(injector);

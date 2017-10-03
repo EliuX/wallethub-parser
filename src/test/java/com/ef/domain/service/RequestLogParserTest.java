@@ -18,7 +18,7 @@ public class RequestLogParserTest {
 
     @Test
     public void testParseRequestLog() {
-        RequestLogParser parser = new RequestLogParser();
+        RequestLogParser parser = new RequestLogParser("");
 
         final Optional<RequestLog> parsedRequestLog =
                 parser.parseRequestLog("1985-11-06.00:30:00 192.168.0.1");
@@ -40,13 +40,13 @@ public class RequestLogParserTest {
 
     @Test
     public void testParseRequestLogs(){
-        RequestLogParser parser = new RequestLogParser();
-
         String textToParse = "1985-11-06.00:30:00 192.168.0.1|" +
                 "not valid text | 1985-11-06 127.0.0.1|" +
                 "1990-11-06.00:30:00 127.0.0.1";
 
-        final List<RequestLog> requestLogs = parser.parseRequestLogs(textToParse);
+        RequestLogParser parser = new RequestLogParser(textToParse);
+
+        final List<RequestLog> requestLogs = parser.parseRequestLogs();
 
         Assert.assertEquals(
                 "The tokens were not properly parsed",

@@ -1,18 +1,39 @@
 package com.ef.domain.service;
 
+import com.ef.common.ParserException;
 import com.ef.common.Utils;
 import com.ef.domain.model.RequestLog;
+import com.sun.org.apache.regexp.internal.RE;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class RequestLogParser {
+public final class RequestLogParser {
 
-    public final List<RequestLog> parseRequestLogs(String inputText) {
-        Scanner scanner = new Scanner(inputText).useDelimiter("\\s*\\|\\s*");
+    private final Scanner scanner;
+
+    public RequestLogParser(String text){
+        this.scanner = new Scanner(text);
+    }
+
+    public RequestLogParser(File logFile){
+        try {
+            scanner = new Scanner(logFile, "UTF-8");
+        }catch (FileNotFoundException ex){
+            throw new ParserException(String.format(
+                    "The log file '%s' was not found",
+                    logFile
+            ));
+        }
+    }
+
+    public final List<RequestLog> parseRequestLogs() {
+        scanner.useDelimiter("\\s*\\|\\s*");
 
         List<RequestLog> requestLogs = new LinkedList<>();
 

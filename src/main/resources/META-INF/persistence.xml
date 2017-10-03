@@ -5,10 +5,11 @@
     <persistence-unit name="request-log" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>com.ef.domain.model.RequestLog</class>
+        <class>com.ef.domain.model.IpCount</class>
         <description>Persistence unit for the request log</description>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/wallethub" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/wallethub?useSSL=false" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="root" />
             <property name="eclipselink.ddl-generation"
@@ -20,6 +21,7 @@
     <persistence-unit name="request-log-test" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>com.ef.domain.model.RequestLog</class>
+        <class>com.ef.domain.model.IpCount</class>
         <description>Persistence unit for the request log for testing purposes</description>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>

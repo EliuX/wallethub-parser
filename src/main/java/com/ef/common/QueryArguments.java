@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class CommandLineArguments {
+public class QueryArguments {
 
     private final Date startDate;
 
@@ -15,7 +15,7 @@ public class CommandLineArguments {
 
     private Date endDate;
 
-    public CommandLineArguments(
+    public QueryArguments(
             Date startDate, Duration duration, Integer threshold
     ) {
         this.startDate = startDate;
@@ -38,7 +38,7 @@ public class CommandLineArguments {
     public Date getEndDate(){
         if (endDate == null)
         {
-            endDate = duration.addTo(getEndDate());
+            endDate = duration.addTo(getStartDate());
         }
 
         return endDate;

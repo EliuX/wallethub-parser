@@ -54,4 +54,11 @@ public final class RequestLog {
 
         return false;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Request from %s at %s", getIp(), getDate()
+        );
+    }
 }
