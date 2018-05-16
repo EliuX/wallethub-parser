@@ -1,11 +1,11 @@
 # Wallethub Log Parser
-Project created for the WalletHub team to get a better idea of my technical and problem solving skills
+Project created for the WalletHub team to get a better idea of my technical and problem-solving skills
 
-##Instructions
+## Instructions
 The goal is to write a parser in Java that parses web server access log file, loads the log to MySQL and checks if a 
 given IP makes more than a certain number of requests for the given duration. 
 
-###Java
+### Java
 
 1. Create a java tool that can parse and load the given log file to MySQL. The delimiter of the log file is pipe (|)
 1. The tool takes "startDate", "duration" and "threshold" as command line arguments. "startDate" is of 
@@ -26,7 +26,7 @@ java -cp "parser.jar" com.ef.Parser --startDate=2017-01-01.13:00:00 --duration=d
 The tool will find any IPs that made more than 250 requests starting from 2017-01-01.13:00:00 to 2017-01-02.13:00:00 
 (24 hours) and print them to console AND also load them to another MySQL table with comments on why it's blocked.
 
-###SQL
+### SQL
 
 1. Write MySQL query to find IPs that mode more than a certain number of requests for a given time period.
 
@@ -34,7 +34,7 @@ The tool will find any IPs that made more than 250 requests starting from 2017-0
 
 1. Write MySQL query to find requests made by a given IP.
 
-##Setup
+## Setup
 Run the `src/main/resources/db/model.sql` file into the MySQL server. The configuration of such server must be compliant
 to the specified in the `persistence.xml`:
 
